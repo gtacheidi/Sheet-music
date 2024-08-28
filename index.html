@@ -13,6 +13,7 @@
             justify-content: center;
             margin: 0;
             background-color: #f4f4f4;
+            padding: 20px;
         }
         #textDisplay {
             font-size: 2em;
@@ -42,6 +43,29 @@
             border-radius: 10px;
             margin: 10px;
         }
+        .search-bar {
+            margin: 20px 0;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 1em;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-left: 10px;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +94,11 @@
         </select>
     </div>
 
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for sheet music...">
+        <button onclick="searchGoogle()">Search</button>
+    </div>
+
     <div class="sites">
         <h2>Best Classical Guitar Sites</h2>
         <a href="https://www.thisisclassicalguitar.com/" target="_blank" class="site-link">This is Classical Guitar</a>
@@ -79,9 +108,9 @@
     </div>
 
     <div class="guitar-images">
-        <img src="https://example.com/guitar1.jpg" alt="Classical Guitar 1">
-        <img src="https://example.com/guitar2.jpg" alt="Classical Guitar 2">
-        <img src="https://example.com/guitar3.jpg" alt="Classical Guitar 3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Antonio_de_Torres_1888.jpg" alt="Classical Guitar 1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Classical_guitar_1.jpg" alt="Classical Guitar 2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Flamenco_guitar.jpg" alt="Classical Guitar 3">
     </div>
 
     <script>
@@ -96,6 +125,12 @@
         colorSelect.addEventListener('change', function() {
             textDisplay.style.color = this.value;
         });
+
+        function searchGoogle() {
+            const query = document.getElementById('searchInput').value;
+            const url = `https://www.google.com/search?q=${encodeURIComponent(query)}+classical+guitar+sheet+music`;
+            window.open(url, '_blank');
+        }
     </script>
 
 </body>
