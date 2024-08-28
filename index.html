@@ -11,7 +11,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
         }
@@ -21,6 +20,27 @@
         }
         .controls {
             margin-bottom: 10px;
+        }
+        .sites {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .site-link {
+            font-size: 1.2em;
+            display: block;
+            margin: 10px 0;
+        }
+        .guitar-images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .guitar-images img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -48,6 +68,20 @@
             <option value="green">Green</option>
             <option value="purple">Purple</option>
         </select>
+    </div>
+
+    <div class="sites">
+        <h2>Best Classical Guitar Sites</h2>
+        <a href="https://www.thisisclassicalguitar.com/" target="_blank" class="site-link">This is Classical Guitar</a>
+        <a href="https://www.classicalguitar.org/" target="_blank" class="site-link">Classical Guitar Corner</a>
+        <a href="https://www.classicalguitarmagazine.com/" target="_blank" class="site-link">Classical Guitar Magazine</a>
+        <a href="https://www.guitarsalon.com/" target="_blank" class="site-link">Guitar Salon International</a>
+    </div>
+
+    <div class="guitar-images">
+        <img src="https://example.com/guitar1.jpg" alt="Classical Guitar 1">
+        <img src="https://example.com/guitar2.jpg" alt="Classical Guitar 2">
+        <img src="https://example.com/guitar3.jpg" alt="Classical Guitar 3">
     </div>
 
     <script>
