@@ -33,10 +33,10 @@
 </head>
 <body>
 
-    <h1>Random Images Generator</h1>
+    <h1>Random Shapes Generator</h1>
 
     <div class="controls">
-        <label for="shapeSelect">Choose Category: </label>
+        <label for="shapeSelect">Choose Shape: </label>
         <select id="shapeSelect">
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
@@ -48,7 +48,27 @@
             <option value="pizza">Pizza</option>
         </select>
 
-        <button onclick="generateShape()">Generate Image</button>
+        <label for="colorSelect">Choose Color: </label>
+        <select id="colorSelect">
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+        </select>
+
+        <label for="lineWidthSelect">Line Width: </label>
+        <select id="lineWidthSelect">
+            <option value="1">1px</option>
+            <option value="2">2px</option>
+            <option value="3">3px</option>
+            <option value="4">4px</option>
+            <option value="5">5px</option>
+        </select>
+
+        <button onclick="generateShape()">Generate Shape</button>
     </div>
 
     <div class="canvas-container">
@@ -59,6 +79,34 @@
         const canvas = document.getElementById('drawingCanvas');
         const ctx = canvas.getContext('2d');
 
-        const images = {
-            cat: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/200px-Cat03.jpg',
-            dog: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/A_Dog
+        const shapes = {
+            cat: drawCat,
+            dog: drawDog,
+            fish: drawFish,
+            bird: drawBird,
+            apple: drawApple,
+            banana: drawBanana,
+            burger: drawBurger,
+            pizza: drawPizza
+        };
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function generateShape() {
+            const shape = document.getElementById('shapeSelect').value;
+            const color = document.getElementById('colorSelect').value;
+            const lineWidth = document.getElementById('lineWidthSelect').value;
+
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = lineWidth;
+
+            const x = getRandomInt(canvas.width - 50);
+            const y = getRandomInt(canvas.height - 50);
+
+            shapes[shape](x, y);
+        }
+
+        function drawCat
