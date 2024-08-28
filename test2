@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Shapes Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .controls label {
+            margin-right: 10px;
+        }
+        .canvas-container {
+            position: relative;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        canvas {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Random Shapes Generator</h1>
+
+    <div class="controls">
+        <label for="shapeSelect">Choose Shape: </label>
+        <select id="shapeSelect">
+            <option value="line">Line</option>
+            <option value="dot">Dot</option>
+            <option value="circle">Circle</option>
+        </select>
+
+        <label for="colorSelect">Choose Color: </label>
+        <select id="colorSelect">
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+        </select>
+
+        <label for="lineWidthSelect">Line Width: </label>
+        <select id="lineWidthSelect">
+            <option value="1">1px</option>
+            <option value="2">2px</option>
+            <option value="3">3px</option>
+            <option value="4">4px</option>
+            <option value="5">5px</option>
+        </select>
+
+        <button onclick="generateShape()">Generate Shape</button>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="drawingCanvas" width="600" height="400"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function generateShape() {
+            const shape = document.getElementById('shapeSelect').value;
+            const color = document.getElementById('colorSelect').value;
+            const lineWidth = document.getElementById('lineWidthSelect').value;
+
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = lineWidth;
+
+            const x1 = getRandomInt(canvas.width);
+            const y1 = getRandomInt(canvas.height);
+            const x2 = getRandomInt(canvas.width);
+            const y2 = getRandomInt(canvas.height);
+            const radius = getRandomInt(50) + 10;
+
+            if (shape === 'line') {
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            } else if (shape === 'dot') {
+                ctx.beginPath();
+                ctx.arc(x1, y1, lineWidth * 2, 0, 2 * Math.PI);
+                ctx.fill();
+            } else if (shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(x1, y1, radius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        }
+    </script>
+
+</body>
+</html>
